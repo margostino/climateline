@@ -14,7 +14,7 @@ export default function Layout({ children, home }) {
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
-          content="Walk through all events have affected the Climate on earth along the history"
+          content="Walk through all events that have affected the Climate on earth along the history"
         />
         <meta
           property="og:image"
@@ -30,7 +30,7 @@ export default function Layout({ children, home }) {
           <>
             <Image
               priority
-              src="/images/profile.jpg"
+              src="/images/header.jpg"
               className={utilStyles.borderCircle}
               height={144}
               width={144}

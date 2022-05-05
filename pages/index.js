@@ -5,7 +5,7 @@ import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
+  const allPostsData = await getSortedPostsData();
   return {
     props: {
       allPostsData,
@@ -34,14 +34,9 @@ export default function Home({ allPostsData }) {
      </Head>
      <section className={utilStyles.headingMd}>
         <p>
-          <Link href="/about/me">
-            <a>How dare we?</a>
-          </Link>
+          Climate Change Timeline. The Ups and Downs along the history.
         </p>
-        <p>
-          Climate Change Timeline registering Ups and Downs along the history.
-        </p>
-      </section>     
+      </section>
       <div className="timeline">
         {allPostsData.map(({ id, date, title, content }) => {
           direction = direction === "left" ? "right" : "left";

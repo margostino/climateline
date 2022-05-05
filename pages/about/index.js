@@ -23,21 +23,4 @@ export default function About({content}) {
       <div dangerouslySetInnerHTML={{ __html: content.contentHtml }} />
     </Layout>
   );
-
-
-
-    // return (
-    //   <>
-    //     <Layout>
-    //         <Head>
-    //             <title>About ClimateLine</title>
-    //         </Head>                        
-    //         <h2>
-    //         <Link href="/">
-    //             <a>Back to home</a>
-    //         </Link>
-    //         </h2>
-    //     </Layout>
-    //   </>    
-    // );
 }

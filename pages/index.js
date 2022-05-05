@@ -13,13 +13,15 @@ export async function getStaticProps() {
   };
 }
 
-function TimeLineBloc({ title, date, content, direction }) {  
-  return (
+function TimeLineBloc({ title, date, direction }) {  
+  return (    
     <div className={`container ${direction}`}>
+      {" "}
       <article className="content">
-        <p>{date}</p>
-        <p>{title}</p>        
-        <p>{content}</p>        
+        <p className="font-bold py-8 text-sky-500 hover:text-sky-800">{date}</p>        
+        <Link href="/about">          
+          <a className="font-bold py-8 text-sky-500 hover:text-sky-800">{title}</a>
+        </Link>                  
       </article>
     </div>
   );
@@ -34,13 +36,13 @@ export default function Home({ allPostsData }) {
      </Head>
      <section className={utilStyles.headingMd}>
         <p>
-          Climate Change Timeline. The Ups and Downs along the history.
-        </p>
+          {" "}
+        </p>        
       </section>
       <div className="timeline">
-        {allPostsData.map(({ id, date, title, content }) => {
+        {allPostsData.map(({ id, date, title }) => {
           direction = direction === "left" ? "right" : "left";
-          return <TimeLineBloc title={title} date={date} content={content} direction={direction} key={id} />;
+          return <TimeLineBloc title={title} date={date} direction={direction} key={id} />;
         })}
       </div>
     </Layout>

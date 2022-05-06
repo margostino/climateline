@@ -35,15 +35,12 @@ export default function Home({ allPostsData }) {
   let direction = "";
   return (
     <Layout home>
-      <Head>
-        <title>{siteTitle}</title>        
-     </Head>
      <section className={utilStyles.headingMd}>             
       </section>
       <div className="timeline">
         {allPostsData.map(({ id, date, title }) => {
           direction = direction === "left" ? "right" : "left";
-          return <TimeLineBloc id={id} title={title} date={date} direction={direction} />;
+          return <TimeLineBloc id={id} title={title} date={date} direction={direction} key={id}/>;
         })}
       </div>
     </Layout>

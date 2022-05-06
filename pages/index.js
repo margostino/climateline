@@ -41,9 +41,13 @@ export default function Home({ allPostsData }) {
      <section className={utilStyles.headingMd}>             
       </section>
       <div className="timeline">
-        {allPostsData.map(({ id, date, title }) => {
-          direction = direction === "left" ? "right" : "left";
-          return <TimeLineBloc id={id} title={title} date={date} direction={direction} key={id}/>;
+        {allPostsData.map(({ id, date, title }) => {                  
+          return [...Array(100)].map((_, i) => {
+            direction = direction === "left" ? "right" : "left";
+            return <TimeLineBloc id={id} title={title} date={date} direction={direction} key={id}/>;
+          });
+          
+          //return <TimeLineBloc id={id} title={title} date={date} direction={direction} key={id}/>;
         })}
       </div>
     </Layout>

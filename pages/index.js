@@ -35,6 +35,9 @@ export default function Home({ allPostsData }) {
   let direction = "";
   return (
     <Layout home>
+      <Head>
+        <title>{siteTitle}</title>        
+     </Head>
      <section className={utilStyles.headingMd}>             
       </section>
       <div className="timeline">

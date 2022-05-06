@@ -38,10 +38,7 @@ export default function Home({ allPostsData }) {
       <Head>
         <title>{siteTitle}</title>        
      </Head>
-     <section className={utilStyles.headingMd}>
-        <p>
-          {" "}
-        </p>        
+     <section className={utilStyles.headingMd}>             
       </section>
       <div className="timeline">
         {allPostsData.map(({ id, date, title }) => {

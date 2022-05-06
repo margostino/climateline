@@ -16,10 +16,12 @@
 - [ ] Preview description in timeline section
 - [ ] Improve AboutMe content with Links and manifesto
 - [ ] Create and set Domain
+- [ ] Subscription to notifications
+- [ ] Twitter integration 
 
 # Contributing
 
-I am learning NextJS and to be honest these are my first steps in Frontend at all. So the design and UX will go very slow. So this is a 'Shout' for Frontend developers willing to contribute to Climate Change Awareness. Feel free to create a shiny PR.
+I am not a Frontend developer. I just learned some basic NextJS in order to have the initial prototype. So the design and UX will go very slow. But not the content. So of course this is a 'Shout' for Frontend developers willing to contribute to Climate Change Awareness. Feel free to create a shiny PR (either for content or design).
 
 # License
 

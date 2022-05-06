@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
+import Date from '../components/date';
 
 export async function getStaticProps() {
   const allPostsData = await getSortedPostsData();
@@ -13,13 +14,16 @@ export async function getStaticProps() {
   };
 }
 
-function TimeLineBloc({ title, date, direction }) {  
+function TimeLineBloc({ id, title, date, direction }) {  
   return (    
     <div className={`container ${direction}`}>
       {" "}
-      <article className="content">
-        <p className="font-bold py-8 text-sky-500 hover:text-sky-800">{date}</p>        
-        <Link href="/about">          
+      <article className="content" key={id}>
+        <small className={utilStyles.lightText}>
+          <Date dateString={date} />
+        </small>
+        <br />
+        <Link href={`/posts/${id}`}>
           <a className="font-bold py-8 text-sky-500 hover:text-sky-800">{title}</a>
         </Link>                  
       </article>
@@ -42,7 +46,7 @@ export default function Home({ allPostsData }) {
       <div className="timeline">
         {allPostsData.map(({ id, date, title }) => {
           direction = direction === "left" ? "right" : "left";
-          return <TimeLineBloc title={title} date={date} direction={direction} key={id} />;
+          return <TimeLineBloc id={id} title={title} date={date} direction={direction} />;
         })}
       </div>
     </Layout>

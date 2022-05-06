@@ -2,7 +2,7 @@
 
 ![](./public/images/readme_profile.png)
 
-### A timeline of most relevants events have affected the Climate Change on Earth
+### A timeline of most relevant events have affected the Climate Change on Earth
 
 ## Features
 

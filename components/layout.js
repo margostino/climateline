@@ -5,25 +5,47 @@ import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 
 const name = 'ClimateLine';
-export const siteTitle = 'ClimateLine';
+const siteTitle = 'ClimateLine';
 
 export default function Layout({ children, home }) {
   return (
     <div className={styles.container}>
       <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <title>{siteTitle}</title>  
+        <link rel="icon" href="favicon.ico" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
           content="Walk through all events that have affected the Climate on earth along the history"
         />
-        <meta
-          property="og:image"
-          content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle,
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-        />
         <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="author" content="Martin D'Agostino" />                    
+        <meta
+          name="twitter:card"
+          key="twittercard"
+          content="summary_large_image"
+        />
+        <meta name="twitter:creator" content="@margostino" />
+        <meta name="twitter:creator:id" content="49469747" />
+        <meta name="twitter:site" content="@climateline" />
+        <meta name="twitter:site:id" content="1522637608052043782" />
+        <meta
+          name="twitter:title"
+          key="twittertitle"
+          content="Remembering the most significant Climate Change events along the history"
+        />
+        <meta
+          name="twitter:description"
+          key="twitterdescription"
+          content="A timeline of the most significant Climate Change events along the history."
+        />
+        <meta
+          name="twitter:image"
+          key="twitterimage"
+          content="https://storage.googleapis.com/primary-web3/monkey-twitter.png"
+        />
       </Head>
       <header className={styles.header}>
         {home ? (

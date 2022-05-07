@@ -2,6 +2,7 @@
 title: 'Sixth IPCC report'
 date: '2021-08-09'
 source: https://history.aip.org/climate/timeline.htm
+icon: file-text-o
 ---
 
 The [Sixth IPCC report](https://www.ipcc.ch/assessment-report/ar6/) warns that catastrophic outcomes cannot be ruled out.

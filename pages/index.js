@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import Head from 'next/head';
-import Layout, { siteTitle } from '../components/layout';
+import Layout from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
 import Date from '../components/date';
+import Image from 'next/image';
 
 export async function getStaticProps() {
   const allPostsData = await getSortedPostsData();
@@ -14,10 +15,14 @@ export async function getStaticProps() {
   };
 }
 
-function TimeLineBloc({ id, title, date, direction }) {  
+function TimeLineBloc({ id, title, date, direction, icon}) {  
+  let iconDirection = direction === "left" ? "icon-left" : "icon-right";
   return (    
     <div className={`container ${direction}`}>
-      {" "}
+      {" "}      
+      <div className={`icon-wrapper ${iconDirection}`}>
+            <i className={`fa fa-${icon}`} aria-hidden="true"></i>
+      </div>
       <article className="content" key={id}>
         <small className={utilStyles.lightText}>
           <Date dateString={date} />
@@ -26,7 +31,7 @@ function TimeLineBloc({ id, title, date, direction }) {
         <Link href={`/posts/${id}`}>
           <a className="font-bold py-8 text-sky-500 hover:text-sky-800">{title}</a>
         </Link>                  
-      </article>
+      </article>      
     </div>
   );
 }
@@ -34,16 +39,11 @@ function TimeLineBloc({ id, title, date, direction }) {
 export default function Home({ allPostsData }) {
   let direction = "";
   return (
-    <Layout home>
-      <Head>
-        <title>{siteTitle}</title>        
-     </Head>
-     <section className={utilStyles.headingMd}>             
-      </section>
+    <Layout home>     
       <div className="timeline">
-        {allPostsData.map(({ id, date, title }) => {                  
+        {allPostsData.map(({ id, date, title, icon }) => {                  
           direction = direction === "left" ? "right" : "left";
-          return <TimeLineBloc id={id} title={title} date={date} direction={direction} key={id}/>;
+          return <TimeLineBloc id={id} title={title} date={date} direction={direction} icon={icon} key={id}/>;
         })}
       </div>
     </Layout>

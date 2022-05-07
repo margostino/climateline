@@ -47,6 +47,20 @@
     z-index: 1;
   }
   
+  .icon-wrapper {
+    position: absolute;
+    z-index: 2;
+    margin-top: 8px;    
+  }
+
+  .icon-left {
+    left: 98%;
+  }
+  
+  .icon-right {
+    right: 97%;
+  }
+
   /* Place the container to the left */
   .left {
     left: 0;

@@ -2,7 +2,7 @@
 
 ![](./public/images/readme_profile.png)
 
-### A timeline of most relevant events have affected the Climate Change on Earth
+### A timeline of the most significant Climate Change events along the history
 
 ## Features
 
@@ -17,7 +17,8 @@
 - [ ] Improve AboutMe content with Links and manifesto
 - [ ] Create and set Domain
 - [ ] Subscription to notifications
-- [ ] Twitter integration 
+- [ ] Twitter integration
+- [ ] SEO
 
 # Contributing
 

@@ -1,12 +1,24 @@
 * {
     box-sizing: border-box;
     padding: 0;
-    margin: 0;
+    margin: 0;    
   }
   
+  .background {
+    background-image: url("/images/background.jpg");
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    z-index: 2;
+  }
+
   /* The actual timeline (the vertical ruler) */
   .timeline {
-    background-color: #474e5d;
+    /* background-color: #474e5d; */
     font-family: Helvetica, sans-serif;
     position: relative;
     max-width: 1200px;
@@ -18,9 +30,9 @@
     content: "";
     position: absolute;
     width: 6px;
-    background-color: white;
-    top: 0;
-    bottom: 0;
+    background-color: lightslategray;
+    top: 50px;
+    bottom: 80px;
     left: 50%;    
     /* margin-left: -3px; */
   }
@@ -39,7 +51,7 @@
     position: absolute;
     width: 25px;
     height: 25px;
-    right: -17px;
+    right: -18px;
     background-color: white;
     border: 4px solid #ff9f55;
     top: 15px;
@@ -80,9 +92,9 @@
     width: 0;
     z-index: 1;
     right: 30px;
-    border: medium solid white;
+    border: medium solid lightslategray;
     border-width: 10px 0 10px 10px;
-    border-color: transparent transparent transparent white;
+    border-color: transparent transparent transparent lightslategray;
   }
   
   /* Add arrows to the right container (pointing left) */
@@ -94,9 +106,9 @@
     width: 0;
     z-index: 1;
     left: 30px;
-    border: medium solid white;
+    border: medium solid lightslategray;
     border-width: 10px 10px 10px 0;
-    border-color: transparent white transparent transparent;
+    border-color: transparent lightslategray transparent transparent;
   }
   
   /* Fix the circle for containers on the right side */
@@ -107,7 +119,7 @@
   /* The actual content */
   .content {
     padding: 20px 30px;
-    background-color: white;
+    background-color: lightslategray;
     position: relative;
     border-radius: 6px;
   }

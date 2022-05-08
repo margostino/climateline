@@ -1,6 +1,6 @@
 # ClimateLine
 
-![](./public/images/readme_profile.png)
+![](./public/images/readme.png)
 
 ### A timeline of the most significant Climate Change events along the history
 

@@ -48,5 +48,11 @@
   }
   
   .lightText {
-    color: #666;
+    color: white;
+  }
+
+  .linkDarkText {
+    font: bold;
+    color: whitesmoke;
+    text-decoration: underline;    
   }

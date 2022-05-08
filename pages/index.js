@@ -28,7 +28,7 @@ function TimeLineBloc({ id, title, date, direction, icon}) {
         </small>
         <br />
         <Link href={`/posts/${id}`}>
-          <a className="font-bold py-8 text-sky-500 hover:text-sky-800">{title}</a>
+          <a className={utilStyles.linkDarkText}>{title}</a>
         </Link>                  
       </article>      
     </div>
@@ -38,7 +38,7 @@ function TimeLineBloc({ id, title, date, direction, icon}) {
 export default function Home({ allPostsData }) {
   let direction = "";
   return (
-    <Layout home>     
+    <Layout home className="background">     
       <div className="timeline">
         {allPostsData.map(({ id, date, title, icon }) => {                  
           direction = direction === "left" ? "right" : "left";

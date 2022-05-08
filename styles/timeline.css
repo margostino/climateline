@@ -56,7 +56,7 @@
   .icon-left {
     left: 98%;
   }
-  
+
   .icon-right {
     right: 97%;
   }
@@ -143,6 +143,14 @@
     /* Make all right containers behave like the left ones */
     .right {
       left: 0%;
+    }
+
+    .icon-left {
+      left: 7%;
+    }
+  
+    .icon-right {
+      right: 88%;
     }
   }
   

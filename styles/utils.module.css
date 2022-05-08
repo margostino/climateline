@@ -48,6 +48,10 @@
   }
   
   .lightText {
+    color: #666;
+  }
+
+  .whiteText {
     color: white;
   }
 

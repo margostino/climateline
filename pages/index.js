@@ -23,7 +23,7 @@ function TimeLineBloc({ id, title, date, direction, icon}) {
             <i className={`fa fa-${icon}`} aria-hidden="true"></i>
       </div>
       <article className="content" key={id}>
-        <small className={utilStyles.lightText}>
+        <small className={utilStyles.whiteText}>
           <Date dateString={date} />
         </small>
         <br />

@@ -129,6 +129,7 @@
     /* Place the timelime to the left */
     .timeline::after {
       left: 31px;
+      z-index: -1;
     }
   
     /* Full-width containers */
@@ -152,16 +153,6 @@
       left: 15px;
     }
   
-    .icon-wrapper {
-      position: absolute;
-      z-index: 3;
-      margin-top: 10px;    
-    }
-
-    .timeline::after {
-      z-index: 0;
-    }
-
     /* Make all right containers behave like the left ones */
     .right {
       left: 0%;

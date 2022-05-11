@@ -150,6 +150,7 @@
     .left::after,
     .right::after {
       left: 15px;
+      z-index: 1;
     }
   
     /* Make all right containers behave like the left ones */

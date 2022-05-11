@@ -158,6 +158,10 @@
       margin-top: 10px;    
     }
 
+    .timeline::after {
+      z-index: 0;
+    }
+
     /* Make all right containers behave like the left ones */
     .right {
       left: 0%;

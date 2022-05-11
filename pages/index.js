@@ -1,9 +1,12 @@
-import InfiniteScroll from "react-infinite-scroll-component";
+import React from 'react';
 import Link from 'next/link';
 import Layout from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
 import Date from '../components/date';
+import InfiniteScroll from "react-infinite-scroll-component";
+import { useEffect, useState } from "react";
+import { Ripple } from 'react-awesome-spinners'
 
 export async function getStaticProps() {
   const allPostsData = await getSortedPostsData();
@@ -38,18 +41,42 @@ function TimeLine({ id, title, date, direction, icon}) {
 
 export default function Home({ allPostsData }) {
   let direction = "";
+  let pageSize = 5
+  
+  const [entries, setEntries] = useState([])
+  const [offset, setOffset] = useState(0)
+  const [hasMore, setHasMore] = useState(true)
+
+  // InfiniteScroll only for visualization since all files are loaded at once.
+  const fetchData = async () => {
+    try {      
+      const newEntries = allPostsData.slice(0, offset + pageSize);      
+      setEntries(newEntries)
+      setOffset((prevOffset) => prevOffset + pageSize)      
+      entries.length === allPostsData.length && setHasMore(false)             
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
   return (
     <Layout home className="background">     
       <div className="timeline">
         <InfiniteScroll
-            dataLength={allPostsData?.length * 10}
-            next={() => console.log("fetching more data")}
-            hasMore={true}
-            loader={<h4></h4>}>            
-              {allPostsData.map(({ id, date, title, icon }) => {                  
-                direction = direction === "left" ? "right" : "left";                
-                return <TimeLine id={id} title={title} date={date} direction={direction} icon={icon} key={id}/>;              
-              })}           
+            dataLength={entries?.length ?? 0}            
+            next={fetchData}
+            hasMore={hasMore}
+            loader={<div className="spinner"><Ripple/></div>} 
+            endMessage={<p></p>}          
+        >
+            {entries.map(({ id, title, date, icon }) => {                  
+              direction = direction === "left" ? "right" : "left";                  
+              return <TimeLine id={id} title={title} date={date} direction={direction} icon={icon} key={id}/>;                
+            })}
         </InfiniteScroll>
       </div>
     </Layout>

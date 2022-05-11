@@ -154,7 +154,7 @@
   
     .icon-wrapper {
       position: absolute;
-      z-index: 2;
+      z-index: 3;
       margin-top: 10px;    
     }
 

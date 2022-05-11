@@ -150,9 +150,14 @@
     .left::after,
     .right::after {
       left: 15px;
-      z-index: 2;
     }
   
+    .icon-wrapper {
+      position: absolute;
+      z-index: 2;
+      margin-top: 10px;    
+    }
+
     /* Make all right containers behave like the left ones */
     .right {
       left: 0%;

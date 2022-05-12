@@ -64,21 +64,23 @@ export default function Home({ allPostsData }) {
   }, [])
 
   return (
-    <Layout home className="background">     
-      <div className="timeline">
-        <InfiniteScroll
-            dataLength={entries?.length ?? 0}            
-            next={fetchData}
-            hasMore={hasMore}
-            loader={<div className="spinner"><Ripple/></div>} 
-            endMessage={<p></p>}          
-        >
-            {entries.map(({ id, title, date, icon }) => {                  
-              direction = direction === "left" ? "right" : "left";                  
-              return <TimeLine id={id} title={title} date={date} direction={direction} icon={icon} key={id}/>;                
-            })}
-        </InfiniteScroll>
-      </div>
-    </Layout>
+    <div className="overlay">
+      <Layout home className="background">     
+        <div className="timeline">
+          <InfiniteScroll
+              dataLength={entries?.length ?? 0}            
+              next={fetchData}
+              hasMore={hasMore}
+              loader={<div className="spinner"><Ripple/></div>} 
+              endMessage={<p></p>}          
+          >
+              {entries.map(({ id, title, date, icon }) => {                  
+                direction = direction === "left" ? "right" : "left";                  
+                return <TimeLine id={id} title={title} date={date} direction={direction} icon={icon} key={id}/>;                
+              })}
+          </InfiniteScroll>
+        </div>
+      </Layout>
+    </div>
   );
 }

@@ -44,7 +44,7 @@ export default function Layout({ children, home }) {
         <meta
           name="twitter:image"
           key="twitterimage"
-          content="https://storage.googleapis.com/primary-web3/monkey-twitter.png"
+          content="https://raw.githubusercontent.com/margostino/climateline/master/public/images/readme.png"
         />
       </Head>
       <header className={styles.header}>

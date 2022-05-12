@@ -177,11 +177,15 @@
       border-color: transparent lightslategray transparent transparent;
     }
   
+    .icon-wrapper {
+      position: absolute;
+      z-index: 2;      
+    }
+
     /* Make sure all circles are at the same spot */
     .left::after,
     .right::after {
-      left: 15px;
-      z-index: 1;
+      left: 15px;      
     }
   
     /* Make all right containers behave like the left ones */

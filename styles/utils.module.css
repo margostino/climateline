@@ -33,6 +33,10 @@
     color: inherit;
   }
   
+  .mainTitle {
+    color: white;
+  }
+
   .padding1px {
     padding-top: 1px;
   }

@@ -159,7 +159,7 @@
     /* Place the timelime to the left */
     .timeline::after {
       left: 31px;
-      z-index: 0;
+      z-index: -1;
     }
   
     /* Full-width containers */

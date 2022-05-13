@@ -64,8 +64,8 @@ export default function Home({ allPostsData }) {
   }, [])
 
   return (
-    <div id='background' className="overlay">
-      <Layout home className="background">     
+    <div className="background">
+      <Layout home>     
         <div className="timeline">
           <InfiniteScroll
               dataLength={entries?.length ?? 0}            

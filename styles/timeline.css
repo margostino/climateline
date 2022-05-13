@@ -4,46 +4,24 @@
     margin: 0;    
   }
   
-  .background {
-    background-image: url("/images/background.jpg");
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    z-index: 2;
-  }
-
-  .overlay{
-    background: url("/images/background.jpg") no-repeat center center fixed; 
+  .background{
+    background: url("/images/background.jpg"); 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;        
+    background-position: center;    
+    background-repeat: no-repeat;
     top: 0; 
-    left: 0;     
-    display:flex;
-    flex-direction: column;
+    left: 0;         
     padding:0;
     margin:0;
-    width: 100%;
-    height: 100%;
-    z-index:-3;
-    text-align:center;
-    /* background-repeat: repeat; */
-    /* height: 100vh; */
-    /* position:absolute; */
-    /* background-image: url("/images/background.jpg");    
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position:relative;
-    width:100%;
-    height:100%;
-    top:0px;
-    left:0px;     */
+    width: auto;
+    height: auto;    
+    display:flex;
+    flex-direction: column;
+    background-repeat: repeat;
+    background-position: center;  
 }
 
   /* The actual timeline (the vertical ruler) */
@@ -156,7 +134,7 @@
   
   /* Media queries - Responsive timeline on screens less than 600px wide */
   @media screen and (max-width: 600px) {
-    .overlay {
+    .background {
       background-image: none;
     }
 

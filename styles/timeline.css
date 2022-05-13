@@ -156,9 +156,14 @@
   
   /* Media queries - Responsive timeline on screens less than 600px wide */
   @media screen and (max-width: 600px) {
+    .overlay {
+      background-image: none;
+    }
+
     /* Place the timelime to the left */
     .timeline::after {
       left: 31px;
+      background-color: lightslategray;
       z-index: -1;
     }
   
@@ -177,10 +182,10 @@
       border-color: transparent lightslategray transparent transparent;
     }
   
-    .icon-wrapper {
+    /* .icon-wrapper {
       position: absolute;
       z-index: 2;      
-    }
+    } */
 
     /* Make sure all circles are at the same spot */
     .left::after,

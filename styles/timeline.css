@@ -4,26 +4,6 @@
     margin: 0;    
   }
   
-  .background{
-    background: url("/images/background.jpg"); 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;        
-    background-position: center;    
-    background-repeat: no-repeat;
-    top: 0; 
-    left: 0;         
-    padding:0;
-    margin:0;
-    width: auto;
-    height: auto;    
-    display:flex;
-    flex-direction: column;
-    background-repeat: repeat;
-    background-position: center;  
-}
-
   /* The actual timeline (the vertical ruler) */
   .timeline {
     /* background-color: #474e5d; */
@@ -50,7 +30,7 @@
     padding: 10px 40px;
     position: relative;
     background-color: inherit;
-    width: 50%;
+    width: 50%;    
   }
   
   /* The circles on the timeline */
@@ -134,10 +114,6 @@
   
   /* Media queries - Responsive timeline on screens less than 600px wide */
   @media screen and (max-width: 600px) {
-    .background {
-      background-image: none;
-    }
-
     /* Place the timelime to the left */
     .timeline::after {
       left: 31px;

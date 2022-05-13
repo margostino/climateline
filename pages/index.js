@@ -41,7 +41,7 @@ function TimeLine({ id, title, date, direction, icon}) {
 
 export default function Home({ allPostsData }) {
   let direction = "";
-  let pageSize = 5
+  let pageSize = 10
   
   const [entries, setEntries] = useState([])
   const [offset, setOffset] = useState(0)
@@ -64,23 +64,39 @@ export default function Home({ allPostsData }) {
   }, [])
 
   return (
-    <div className="background">
-      <Layout home>     
-        <div className="timeline">
-          <InfiniteScroll
-              dataLength={entries?.length ?? 0}            
-              next={fetchData}
-              hasMore={hasMore}
-              loader={<div className="spinner"><Ripple/></div>} 
-              endMessage={<p></p>}          
-          >
-              {entries.map(({ id, title, date, icon }) => {                  
-                direction = direction === "left" ? "right" : "left";                  
-                return <TimeLine id={id} title={title} date={date} direction={direction} icon={icon} key={id}/>;                
-              })}
-          </InfiniteScroll>
-        </div>
-      </Layout>
-    </div>
+    <Layout home>     
+        <style jsx global>{`
+          body {
+            background-image: url("/images/background.jpg"); 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;        
+            background-position: center;    
+            background-repeat: repeat;
+            display:flex;          
+            flex-direction: column;
+          }
+          @media screen and (max-width: 600px) {
+            body {
+              background-image: none;
+            }
+          }
+      `}</style>    
+      <div className="timeline">
+        <InfiniteScroll
+            dataLength={entries?.length ?? 0}            
+            next={fetchData}
+            hasMore={hasMore}
+            loader={<div className="spinner"><Ripple/></div>} 
+            endMessage={<p></p>}          
+        >
+            {entries.map(({ id, title, date, icon }) => {                  
+              direction = direction === "left" ? "right" : "left";                  
+              return <TimeLine id={id} title={title} date={date} direction={direction} icon={icon} key={id}/>;                
+            })}
+        </InfiniteScroll>
+      </div>
+    </Layout>      
   );
 }

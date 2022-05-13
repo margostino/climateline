@@ -22,30 +22,12 @@ export default function Layout({ children, home }) {
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="author" content="Martin D'Agostino" />                    
-        <meta
-          name="twitter:card"
-          key="twittercard"
-          content="summary_large_image"
-        />
+        <meta name="twitter:card" content="summary_large_image"/>
         <meta name="twitter:creator" content="@margostino" />
-        <meta name="twitter:creator:id" content="49469747" />
         <meta name="twitter:site" content="@climateline" />
-        <meta name="twitter:site:id" content="1522637608052043782" />
-        <meta
-          name="twitter:title"
-          key="twittertitle"
-          content="Remembering the most significant Climate Change events along the history"
-        />
-        <meta
-          name="twitter:description"
-          key="twitterdescription"
-          content="A timeline of the most significant Climate Change events along the history."
-        />
-        <meta
-          name="twitter:image"
-          key="twitterimage"
-          content="https://raw.githubusercontent.com/margostino/climateline/master/public/images/readme.png"
-        />
+        <meta name="twitter:title" content="Remembering the most significant Climate Change events along the history"/>
+        <meta name="twitter:description" content="A timeline of the most significant Climate Change events along the history."/>
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/margostino/climateline/master/public/images/readme.png"/>
       </Head>
       <header className={styles.header}>
         {home ? (

@@ -25,9 +25,9 @@ export default function Layout({ children, home }) {
         <meta name="twitter:card" content="summary_large_image"/>
         <meta name="twitter:creator" content="@margostino" />
         <meta name="twitter:site" content="@climateline" />
-        <meta name="twitter:title" content="Remembering the most significant Climate Change events along the history"/>
-        <meta name="twitter:description" content="A timeline of the most significant Climate Change events along the history."/>
-        <meta name="twitter:image" content="https://raw.githubusercontent.com/margostino/climateline/master/public/images/readme.png"/>
+        <meta name="twitter:title" content="Raising Awareness through the time"/>
+        <meta name="twitter:description" content="A timeline of the most significant Climate Change events along the history"/>
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/margostino/climateline/master/public/images/logo.png"/>
       </Head>
       <header className={styles.header}>
         {home ? (

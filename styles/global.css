@@ -31,37 +31,3 @@ img {
 .spinner {
   margin-left: 317px;  
 }
-
-/* body#no-background {
-  background-color: white;
-} */
-
-body#no-background{
-  background-image:none
-}
-
-body#background{
-  background-image: url("/images/background.jpg"); 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;        
-  background-position: center;    
-  background-repeat: no-repeat;
-  top: 0; 
-  left: 0;         
-  padding:0;
-  margin:0;
-  width: auto;
-  height: auto;    
-  display:flex;
-  flex-direction: column;
-  background-repeat: repeat;
-  background-position: center;  
-}
-
-@media screen and (max-width: 600px) {
-  body {
-    background-image: none;
-  }
-}

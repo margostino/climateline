@@ -79,7 +79,7 @@ export default function Home({ allPostsData }) {
           }
           @media screen and (max-width: 600px) {
             body {
-              background-image: none;
+              background-image: url("/images/background_small.jpg"); 
             }
           }
       `}</style>    

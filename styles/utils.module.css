@@ -69,8 +69,8 @@
     margin: 3rem 0 0;
   }
 
-  @media screen and (max-width: 600px) {
+  /* @media screen and (max-width: 600px) {
     .mainTitle {
       color: black;      
     }
-  }  
+  }   */

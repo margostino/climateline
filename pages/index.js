@@ -92,8 +92,12 @@ export default function Home({ allPostsData }) {
             endMessage={<p></p>}          
         >
             {entries.map(({ id, title, date, icon }) => {                  
-              direction = direction === "left" ? "right" : "left";                  
-              return <TimeLine id={id} title={title} date={date} direction={direction} icon={icon} key={id}/>;                
+              direction = direction === "left" ? "right" : "left";   
+              if (date) {
+                return <TimeLine id={id} title={title} date={date} direction={direction} icon={icon} key={id}/>;   
+              } else {
+                return;
+              }
             })}
         </InfiniteScroll>
       </div>

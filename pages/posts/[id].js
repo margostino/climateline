@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const postData = await getPostData(params.id)
+  const postData = await getPostData(params.id)  
   return {
     props: {
       postData
@@ -23,25 +23,25 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Post({ postData }) {
-    return (
-      <Layout post>
-        <Head>
-          <title>{postData.title}</title>
-        </Head>
-        <article>
-          <h1 className={utilStyles.headingXl}>{postData.title}</h1>                    
-          <div className={utilStyles.lightText}>
-            <Date dateString={postData.date} />
-          </div>
-          <p className={utilStyles.headingMd}>
-            Source:{' '}
-            <Link href={postData.source}>
-              <a target="_blank">{postData.source}</a>
-            </Link>            
-          </p>
-          <br />
-          <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-        </article>
-      </Layout>
-    );
-  }
+  return (
+    <Layout post>
+      <Head>
+        <title>{postData.title}</title>
+      </Head>
+      <article>
+        <h1 className={utilStyles.headingXl}>{postData.title}</h1>                    
+        <div className={utilStyles.lightText}>
+          <Date dateString={postData.date} />
+        </div>
+        <p className={utilStyles.headingMd}>
+          Source:{' '}
+          <Link href={postData.source}>
+            <a target="_blank">{postData.source}</a>
+          </Link>            
+        </p>
+        <br />
+        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />        
+      </article>
+    </Layout>
+  );
+}

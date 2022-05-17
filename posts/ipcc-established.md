@@ -1,7 +1,8 @@
 ---
 title: 'The Intergovernmental Panel on Climate Change (IPCC) is established'
 date: '1988-12-06'
-source: https://www.ipcc.ch/about/history
+source_url: https://www.ipcc.ch/about/history
+source_name: IPCC
 icon: handshake-o
 ---
 

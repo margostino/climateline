@@ -1,7 +1,8 @@
 ---
 title: 'Kelling Curve: CO2 concentration passing 400 ppm'
 date: '2013-05-09'
-source: https://cleanenergy.org/blog/all-eyes-on-keeling-curve-scientists-anxious-as-co2-levels-to-cross-400-ppm
+source_url: https://cleanenergy.org/blog/all-eyes-on-keeling-curve-scientists-anxious-as-co2-levels-to-cross-400-ppm
+source_name: cleanenergy.org
 icon: thermometer-three-quarters
 ---
 

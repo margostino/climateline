@@ -1,7 +1,8 @@
 ---
 title: 'The Paris Agreement'
 date: '2016-04-11'
-source: https://en.wikipedia.org/wiki/Paris_Agreement
+source_url: https://en.wikipedia.org/wiki/Paris_Agreement
+source_name: Wikipedia
 icon: handshake-o
 ---
 

@@ -1,7 +1,8 @@
 ---
 title: 'The Kyoto Protocol goes into effect'
 date: '2005-02-16'
-source: https://www.theguardian.com/science/2005/feb/16/sciencenews.environment
+source_url: https://www.theguardian.com/science/2005/feb/16/sciencenews.environment
+source_name: The Guardian
 icon: handshake-o
 ---
 

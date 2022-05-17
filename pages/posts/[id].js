@@ -35,8 +35,8 @@ export default function Post({ postData }) {
         </div>
         <p className={utilStyles.headingMd}>
           Source:{' '}
-          <Link href={postData.source}>
-            <a target="_blank">{postData.source}</a>
+          <Link href={postData.source_url}>
+            <a target="_blank">{postData.source_name}</a>
           </Link>            
         </p>
         <br />

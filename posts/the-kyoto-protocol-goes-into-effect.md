@@ -3,7 +3,7 @@ title: 'The Kyoto Protocol goes into effect'
 date: '2005-02-16'
 source_url: https://www.theguardian.com/science/2005/feb/16/sciencenews.environment
 source_name: The Guardian
-icon: handshake-o
+icon: handshake
 ---
 
 The delayed [Kyoto Protocol](https://unfccc.int/kyoto_protocol#:~:text=The%20Kyoto%20Protocol%20was%20adopted,force%20on%2016%20February%202005.) on global warming finally came into effect today, seven years after it was first negotiated.

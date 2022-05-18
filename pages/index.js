@@ -7,25 +7,32 @@ import Date from '../components/date';
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useEffect, useState } from "react";
 import { Ripple } from 'react-awesome-spinners'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ThemeProvider } from 'next-themes'
+// import { findIconDefinition} from '@fortawesome/fontawesome-svg-core';
+// import { faSignOut, faThermometerThreeQuarters } from "@fortawesome/free-solid-svg-icons";
+//import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro'
 
-export async function getStaticProps() {
+export async function getStaticProps() {  
   const allPostsData = await getSortedPostsData();
   return {
     props: {
-      allPostsData,
+      allPostsData,      
     },
     revalidate: 10,
   };
 }
 
 function TimeLine({ id, title, date, direction, icon}) {  
-  let iconDirection = direction === "left" ? "icon-left" : "icon-right";
-  return (    
-    <div className={`container ${direction}`}>
+  let iconDirection = direction === "left" ? "icon-left" : "icon-right";    
+  return (        
+    <div className={`container ${direction}`}>      
       {" "}      
-      <div className={`icon-wrapper ${iconDirection}`}>
-            <i className={`fa fa-${icon}`} aria-hidden="true"></i>
-      </div>
+      <div className={`icon-wrapper ${iconDirection}`}>            
+            <ThemeProvider attribute='class'>
+              <FontAwesomeIcon icon={icon} size="xs" fixedWidth aria-hidden="true" color='black'/>
+            </ThemeProvider>
+      </div>      
       <article className="content" key={id}>
         <small className={utilStyles.whiteText}>
           <Date dateString={date} />
@@ -65,9 +72,9 @@ export default function Home({ allPostsData }) {
 
   return (
     <Layout home>     
-        <style jsx global>{`
+        {/* <style jsx global>{`
           body {
-            background-image: url("/images/background.jpg"); 
+            background-image: url("/images/background.avif"); 
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -82,7 +89,7 @@ export default function Home({ allPostsData }) {
               background-image: url("/images/background_small.jpg"); 
             }
           }
-      `}</style>    
+      `}</style>     */}
       <div className="timeline">
         <InfiniteScroll
             dataLength={entries?.length ?? 0}            

@@ -31,4 +31,5 @@ img {
 [data-theme='dark'] body {
   color: #fff;
   background: #192734;
+  z-index: -1;
 }

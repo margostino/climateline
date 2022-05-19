@@ -121,6 +121,7 @@
     /* Place the timelime to the left */
     .timeline::after {
       left: 29px;      
+      /* z-index: -1; */
       background-color: white;      
     }
   

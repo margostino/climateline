@@ -120,9 +120,8 @@
   @media screen and (max-width: 600px) {
     /* Place the timelime to the left */
     .timeline::after {
-      left: 31px;
-      background-color: lightslategray;
-      z-index: -1;
+      left: 29px;
+      background-color: white;      
     }
   
     /* Full-width containers */
@@ -140,10 +139,12 @@
       border-color: transparent lightslategray transparent transparent;
     }
   
-    /* .icon-wrapper {
+    .icon-wrapper {
       position: absolute;
-      z-index: 2;      
-    } */
+      z-index: 2;
+      left: 23px;
+      margin-top: 10px;    
+    }
 
     /* Make sure all circles are at the same spot */
     .left::after,
@@ -157,11 +158,11 @@
     }
 
     .icon-left {
-      left: 7%;
+      left: none;
     }
   
     .icon-right {
-      right: 88%;
+      right: none;
     }
   }
   

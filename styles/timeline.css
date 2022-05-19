@@ -121,7 +121,7 @@
     /* Place the timelime to the left */
     .timeline::after {
       left: 29px;
-      z-index: 0;
+      /* z-index: 0; */
       background-color: white;      
     }
   
@@ -150,7 +150,8 @@
     /* Make sure all circles are at the same spot */
     .left::after,
     .right::after {
-      left: 15px;      
+      left: 15px; 
+      z-index: 1;     
     }
   
     /* Make all right containers behave like the left ones */

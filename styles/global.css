@@ -26,3 +26,9 @@ img {
   max-width: 100%;
   display: block;
 }
+
+[data-theme='dark'],
+[data-theme='dark'] body {
+  color: #fff;
+  background: #192734;
+}

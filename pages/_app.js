@@ -13,7 +13,7 @@ library.add(...iconList);
 
 export default function App({ Component, pageProps }) {
     return (
-      <ThemeProvider>
+      <ThemeProvider forcedTheme="dark">
         <Component {...pageProps} />
       </ThemeProvider>
     )

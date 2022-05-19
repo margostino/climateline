@@ -29,9 +29,7 @@ function TimeLine({ id, title, date, direction, icon}) {
     <div className={`container ${direction}`}>      
       {" "}      
       <div className={`icon-wrapper ${iconDirection}`}>            
-            <ThemeProvider attribute='class'>
-              <FontAwesomeIcon icon={icon} size="xs" fixedWidth aria-hidden="true" color='black'/>
-            </ThemeProvider>
+            <FontAwesomeIcon icon={icon} size="xs" fixedWidth aria-hidden="true" color='black'/>            
       </div>      
       <article className="content" key={id}>
         <small className={utilStyles.whiteText}>

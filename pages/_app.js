@@ -12,8 +12,10 @@ const iconList = Object.keys(Icons)
 
 library.add(...iconList);
 
-ReactGA.initialize("G-QGCX7YEQN4");
-ReactGA.pageview(window.location.pathname + window.location.search);
+if (typeof window !== "undefined") {
+  ReactGA.initialize("G-QGCX7YEQN4");
+  ReactGA.pageview(window.location.pathname + window.location.search);
+}
 
 export default function App({ Component, pageProps }) {
     return (

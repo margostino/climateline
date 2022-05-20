@@ -4,8 +4,13 @@ import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 
-const name = 'Climateline';
+const siteName = 'Climateline';
 const siteTitle = 'Climateline';
+const author = 'Martin D\'Agostino'
+const currentURL = 'https://climateline.vercel.app'
+const previewImage = 'https://raw.githubusercontent.com/margostino/climateline/master/public/images/logo.png'
+const siteDescription = 'A timeline of the most significant Climate Change events along the history'
+const socialTitle = 'Raising Awareness through the time'
 
 export default function Layout({ children, home }) {
   return (
@@ -13,7 +18,7 @@ export default function Layout({ children, home }) {
       <Head>
         <title>{siteTitle}</title>          
         {/* Global Site Tag (gtag.js) - Google Analytics */}
-        <script
+        {/* <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=G-QGCX7YEQN4`}
         />
@@ -28,23 +33,26 @@ export default function Layout({ children, home }) {
           });
         `,
           }}
-        />
+        /> */}
         <link rel="icon" href="favicon.ico" />
         {/* <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /> */}
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-          name="description"
-          content="Walk through all events that have affected the Climate on earth along the history"
-        />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="author" content="Martin D'Agostino" />                    
+        <meta name="description" content={siteDescription} />        
+        <meta name="author" content={author} /> 
+        {/* Open Graph */}
+        <meta property="og:url" content={currentURL} key="ogurl" />
+        <meta property="og:image" content={previewImage} key="ogimage" />
+        <meta property="og:site_name" content={siteName} key="ogsitename" />
+        <meta name="og:title" content={siteTitle} key="ogtitle" />
+        <meta property="og:description" content={siteDescription} key="ogdesc" />                           
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image"/>
         <meta name="twitter:creator" content="@margostino" />
         <meta name="twitter:site" content="@climateline" />
-        <meta name="twitter:title" content="Raising Awareness through the time"/>
-        <meta name="twitter:description" content="A timeline of the most significant Climate Change events along the history"/>
-        <meta name="twitter:image" content="https://raw.githubusercontent.com/margostino/climateline/master/public/images/logo.png"/>
+        <meta name="twitter:title" content={socialTitle}/>
+        <meta name="twitter:description" content={siteDescription} />
+        <meta name="twitter:image" content={previewImage}/>
       </Head>
       <header className={styles.header}>
         {home ? (
@@ -57,13 +65,13 @@ export default function Layout({ children, home }) {
                   className={utilStyles.borderCircle}
                   height={144}
                   width={144}
-                  alt={name}
+                  alt={siteName}
                 />
               </a>
             </Link>
             <h2 className={utilStyles.headingLg}>
               <Link href="/about">
-                <a className={utilStyles.mainTitle}>{name}</a>
+                <a className={utilStyles.mainTitle}>{siteName}</a>
               </Link>         
             </h2>     
           </>
@@ -77,13 +85,13 @@ export default function Layout({ children, home }) {
                   className={utilStyles.borderCircle}
                   height={108}
                   width={108}
-                  alt={name}
+                  alt={siteName}
                 />
               </a>
             </Link>
             <h2 className={utilStyles.headingLg}>
               <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
+                <a className={utilStyles.colorInherit}>{siteName}</a>
               </Link>         
             </h2>
           </>

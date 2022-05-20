@@ -1,4 +1,4 @@
-# ClimateLine
+# Climateline
 
 ![Climateline logo](./public/images/logo.png#center)
 

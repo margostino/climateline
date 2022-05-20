@@ -1,6 +1,6 @@
 # ClimateLine
 
-![](./public/images/logo.png)
+![Climateline logo](./public/images/logo.png#center)
 
 ### A timeline of the most significant Climate Change events along the history
 

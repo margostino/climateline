@@ -45,7 +45,7 @@ export default function Layout({ children, home }) {
         <meta property="og:image" content={previewImage} key="ogimage" />
         <meta property="og:site_name" content={siteName} key="ogsitename" />
         <meta name="og:title" content={siteTitle} key="ogtitle" />
-        <meta property="og:description" content={siteDescription} key="ogdesc" />                           
+        <meta property="og:description" content="{siteDescription}" key="ogdesc" />                           
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image"/>
         <meta name="twitter:creator" content="@margostino" />

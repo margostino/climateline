@@ -5,7 +5,7 @@ import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 
 const siteName = 'Climateline';
-const siteTitle = 'Climateline';
+const siteTitle = 'Climateline - Raising Awareness through the time';
 const author = 'Martin D\'Agostino'
 const currentURL = 'https://climateline.vercel.app'
 const previewImage = 'https://raw.githubusercontent.com/margostino/climateline/master/public/images/logo.png'

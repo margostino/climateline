@@ -1,5 +1,6 @@
 import '../styles/global.css';
 import '../styles/timeline.css';
+import ReactGA from "react-ga";
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import {library} from '@fortawesome/fontawesome-svg-core';
 import * as Icons from '@fortawesome/free-solid-svg-icons';
@@ -10,6 +11,11 @@ const iconList = Object.keys(Icons)
   .map((icon) => Icons[icon]);
 
 library.add(...iconList);
+
+if (typeof window !== "undefined") {
+  ReactGA.initialize("G-QGCX7YEQN4");
+  ReactGA.pageview(window.location.pathname + window.location.search);
+}
 
 export default function App({ Component, pageProps }) {
     return (

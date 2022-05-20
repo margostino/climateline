@@ -3,7 +3,7 @@ title: 'First Earth Day'
 date: '1970-04-22'
 source_url: https://www.earthday.org/history
 source_name: earthday.org
-icon: hand-peace
+icon: earth
 ---
 
 The [first-ever Earth Day](https://www.earthday.org/history/) was held in the US almost exactly 50 years ago on April 22, 1970.

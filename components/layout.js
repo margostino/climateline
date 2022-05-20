@@ -11,7 +11,24 @@ export default function Layout({ children, home }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>{siteTitle}</title>  
+        <title>{siteTitle}</title>          
+        {/* Global Site Tag (gtag.js) - Google Analytics */}
+        <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=G-QGCX7YEQN4`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-QGCX7YEQN4', {
+            page_path: window.location.pathname,
+          });
+        `,
+          }}
+        />
         <link rel="icon" href="favicon.ico" />
         {/* <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /> */}
         <meta charSet="utf-8" />

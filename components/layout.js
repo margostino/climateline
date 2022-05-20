@@ -9,7 +9,7 @@ const siteTitle = 'Climateline';
 const author = 'Martin D\'Agostino'
 const currentURL = 'https://climateline.vercel.app'
 const previewImage = 'https://raw.githubusercontent.com/margostino/climateline/master/public/images/logo.png'
-const siteDescription = 'A timeline of the most significant Climate Change events along the history'
+const siteDescription = 'A timeline of Climate Change events along the history'
 const socialTitle = 'Raising Awareness through the time'
 
 export default function Layout({ children, home }) {

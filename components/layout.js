@@ -18,7 +18,7 @@ export default function Layout({ children, home }) {
       <Head>
         <title>{siteTitle}</title>          
         {/* Global Site Tag (gtag.js) - Google Analytics */}
-        {/* <script
+        <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=G-QGCX7YEQN4`}
         />
@@ -33,7 +33,7 @@ export default function Layout({ children, home }) {
           });
         `,
           }}
-        /> */}
+        />
         <link rel="icon" href="favicon.ico" />
         {/* <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /> */}
         <meta charSet="utf-8" />

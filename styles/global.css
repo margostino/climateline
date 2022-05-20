@@ -27,6 +27,11 @@ img {
   display: block;
 }
 
+img[src*='#center'] {
+  display: block;
+  margin: auto;
+}
+
 [data-theme='dark'] body {
   color: #fff;
   background: #192734;  

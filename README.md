@@ -7,18 +7,23 @@
 ## Features
 
 - [x] Initial very basic design with few posts
-- [ ] Filtering (by date, by location, by label)
+- [x] SEO
+- [x] Google Analytics
+- [x] Dark Mode
+- [x] Infinite scrolling
+- [x] Show Source/Reference
+- [x] Icons in timeline
+- [ ] Filtering (by date, by location, by label, by free text...tbd)
 - [ ] Labeling (good, bad...)
 - [ ] Render Label State in point in time (circle)
 - [ ] Design/UX (of course)
-- [ ] Infinite scrolling
-- [ ] Show Source/Reference
 - [ ] Preview description in timeline section
 - [ ] Improve AboutMe content with Links and manifesto
 - [ ] Create and set Domain
 - [ ] Subscription to notifications
 - [ ] Twitter integration
-- [ ] SEO
+- [ ] Curate content
+- [ ] Parallel timelines with personalized content (e.g. companies contribution)
 
 # Contributing
 

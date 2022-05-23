@@ -5,14 +5,14 @@ import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 
 const siteName = 'Climateline';
-const siteTitle = 'Climateline - Raising Awareness through the time';
+const siteTitle = 'Climateline - Raising Awareness through the time ∞';
 const author = 'Martin D\'Agostino'
 const currentURL = 'https://climateline.vercel.app'
 const previewImage = 'https://raw.githubusercontent.com/margostino/climateline/master/public/images/logo.png'
 const siteDescription = 'A timeline of Climate Change events along the history'
 const socialTitle = 'Raising Awareness through the time'
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, home}) {  
   return (
     <div className={styles.container}>
       <Head>
@@ -69,11 +69,13 @@ export default function Layout({ children, home }) {
                 />
               </a>
             </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/about">
-                <a className={utilStyles.mainTitle}>{siteName}</a>
-              </Link>         
-            </h2>     
+            <div>
+              <h2 id="title" className={utilStyles.headingLg}>
+                <Link href="/about">
+                  <a className={utilStyles.mainTitle}>{siteName}</a>
+                </Link>                                          
+              </h2>
+            </div>
           </>
         ) : (
           <>

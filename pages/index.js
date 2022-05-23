@@ -2,25 +2,35 @@ import React from 'react';
 import Link from 'next/link';
 import Layout from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
-import { getSortedPostsData } from '../lib/posts';
+import { getPosts } from '../lib/posts';
 import Date from '../components/date';
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useEffect, useState } from "react";
 import { Ripple } from 'react-awesome-spinners'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ThemeProvider } from 'next-themes'
-// import { findIconDefinition} from '@fortawesome/fontawesome-svg-core';
-// import { faSignOut, faThermometerThreeQuarters } from "@fortawesome/free-solid-svg-icons";
-//import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro'
+import useOrder from "../lib/useOrder";
 
 export async function getStaticProps() {  
-  const allPostsData = await getSortedPostsData();
+  const allPostsData = await getPosts();
   return {
     props: {
       allPostsData,      
     },
     revalidate: 10,
   };
+}
+
+// Sort posts by date
+function sortPosts(orderProperty, allPostsData) {  
+  return allPostsData.sort(({ date: a }, { date: b }) => {    
+    if (a < b) {
+      return orderProperty === "descending" ? 1 : -1;
+    } else if (a > b) {
+      return orderProperty === "descending" ? -1 : 1;
+    } else {
+      return 0;
+    }
+  });
 }
 
 function TimeLine({ id, title, date, direction, icon}) {  
@@ -47,12 +57,13 @@ function TimeLine({ id, title, date, direction, icon}) {
 export default function Home({ allPostsData }) {
   let direction = "";
   let pageSize = 10
-  
+
+  const [order, setOrder] = useOrder();
   const [entries, setEntries] = useState([])
   const [offset, setOffset] = useState(0)
   const [hasMore, setHasMore] = useState(true)
-
-  // InfiniteScroll only for visualization since all files are loaded at once.
+  
+  // InfiniteScroll only for visualization since all files are loaded async at once.
   const fetchData = async () => {
     try {      
       const newEntries = allPostsData.slice(0, offset + pageSize);      
@@ -65,37 +76,85 @@ export default function Home({ allPostsData }) {
   }
 
   useEffect(() => {
+    const orderProperty = order === "descending" ? "ascending" : "descending";
+    const root = window.document.documentElement;    
+    root.classList.remove(orderProperty);
+    root.classList.add(order);
+    
+    if (typeof window !== "undefined") {
+      localStorage.setItem("order", order);
+    }
+    const sorted = sortPosts(order, allPostsData);        
+    setEntries(sorted);
+  }, [order]);
+    
+  useEffect(() => {
     fetchData()
   }, [])
+  
+  // useEffect(() => {
+  //   const node = document.createElement("li");
+  //   const textnode = document.createTextNode("Water");
+  //   node.appendChild(textnode);
+  //   const a = "<svg class=\"svg-icon order\" onClick={() => setOrder(\"ascending\")} style=\"width:1em;height:1em;vertical:middle;fill:currentColor;overflow:hidden;display:inline-block;margin-left:20px\" viewBox=\"0 0 1024 1024\" color=\"#20B2AA\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M279.15323 958.059228l217.110799-363.160177-141.539436 0L354.724593 63.957829l-151.123938 0 0 530.943021L62.057421 594.900849 279.15323 958.059228 279.15323 958.059228zM570.078783 64.464885l386.443791 0 0 108.976114L570.078583 173.440999 570.078783 64.464885 570.078783 64.464885zM570.078783 369.594007 878.364965 369.594007l0-108.974515L570.078783 260.619492 570.078783 369.594007zM570.078783 565.747016l230.128573 0 0-108.976114L570.078783 456.770901 570.078783 565.747016 570.078783 565.747016zM570.078783 761.904621l151.972163 0L722.050945 652.930305l-151.972163 0L570.078783 761.904621zM570.078783 958.059228l73.813355 0 0-108.974315-73.813355 0L570.078783 958.059228z\"></path></svg>"
+  //   var x = document.getElementById("title");
+  //   x.outerHTML += a;
+  // });
 
   return (
-    <Layout home>     
-        {/* <style jsx global>{`
-          body {
-            background-image: url("/images/background.avif"); 
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;        
-            background-position: center;    
-            background-repeat: repeat;
-            display:flex;          
-            flex-direction: column;
-          }
-          @media screen and (max-width: 600px) {
-            body {
-              background-image: url("/images/background_small.jpg"); 
-            }
-          }
-      `}</style>     */}
+    <Layout home>      
+        {/* <select className="form-select appearance-none
+      block
+      w-full
+      px-3
+      py-1.5
+      text-base
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding bg-no-repeat
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+          <option value="all">all</option>
+          <option value="agreements">agreements</option>
+          <option value="warming">warming</option>
+        </select>                
+        <div className='sorting'>
+          {order === "ascending" ? (
+                      <svg 
+                        className="svg-icon" 
+                        onClick={() => setOrder("ascending")}
+                        style={{width:"1em", height:"1em", vertical:"middle", fill:"currentColor", overflow:"hidden", display:"inline-block", marginLeft:"20px"}}              
+                        viewBox="0 0 1024 1024" 
+                        color="#20B2AA"
+                        version="1.1" 
+                        xmlns="http://www.w3.org/2000/svg">
+                          <path d="M279.15323 958.059228l217.110799-363.160177-141.539436 0L354.724593 63.957829l-151.123938 0 0 530.943021L62.057421 594.900849 279.15323 958.059228 279.15323 958.059228zM570.078783 64.464885l386.443791 0 0 108.976114L570.078583 173.440999 570.078783 64.464885 570.078783 64.464885zM570.078783 369.594007 878.364965 369.594007l0-108.974515L570.078783 260.619492 570.078783 369.594007zM570.078783 565.747016l230.128573 0 0-108.976114L570.078783 456.770901 570.078783 565.747016 570.078783 565.747016zM570.078783 761.904621l151.972163 0L722.050945 652.930305l-151.972163 0L570.078783 761.904621zM570.078783 958.059228l73.813355 0 0-108.974315-73.813355 0L570.078783 958.059228z"  />
+                      </svg>                
+                    ) : (
+                      <svg 
+                        className="svg-icon" 
+                        onClick={() => setOrder("descending")}
+                        style={{width:"1em", height:"1em", vertical:"middle", fill:"currentColor", overflow:"hidden", display:"inline-block", marginLeft:"20px"}} 
+                        color="#00FFFF"
+                        viewBox="0 0 1024 1024" 
+                        version="1.1" 
+                        xmlns="http://www.w3.org/2000/svg">
+                          <path d="M569.508769 653.352619l151.594419 0 0 108.819221-151.594419 0L569.508769 653.352619zM569.508769 65.693452l385.479045 0 0 108.828814L569.508569 174.522266 569.508769 65.693452 569.508769 65.693452zM569.508769 261.583239l307.513506 0 0 108.819021L569.508769 370.402259 569.508769 261.583239 569.508769 261.583239zM569.508769 457.463032l229.552363 0 0 108.821019-229.552363 0C569.508769 566.284051 569.508769 457.463032 569.508769 457.463032zM569.508769 849.232612l73.62868 0 0 108.826815-73.62868 0L569.508769 849.232612zM354.693414 427.846912l0 530.212516L203.94622 958.059428 203.94622 427.846912 62.754748 427.846912 279.308125 65.187795 495.87849 427.846912 354.693414 427.846912z"  />
+                      </svg>
+                    )}          
+      </div>
+      <br/><br/>                    */}
       <div className="timeline">
         <InfiniteScroll
             dataLength={entries?.length ?? 0}            
             next={fetchData}
             hasMore={hasMore}
             loader={<div className="spinner"><Ripple/></div>} 
-            endMessage={<p></p>}          
-        >
+            endMessage={<p></p>}>
             {entries.map(({ id, title, date, icon }) => {                  
               direction = direction === "left" ? "right" : "left";   
               if (date) {

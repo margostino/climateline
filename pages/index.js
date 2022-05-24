@@ -39,7 +39,7 @@ function TimeLine({ id, title, date, direction, icon}) {
     <div className={`container ${direction}`}>      
       {" "}      
       <div className={`icon-wrapper ${iconDirection}`}>            
-            <FontAwesomeIcon icon={icon} size="xs" fixedWidth aria-hidden="true" color='black'/>            
+            <FontAwesomeIcon icon={icon} size="1x" fixedWidth aria-hidden="true" color='black'/>            
       </div>      
       <article className="content" key={id}>
         <small className={utilStyles.whiteText}>
@@ -102,44 +102,33 @@ export default function Home({ allPostsData }) {
   // });
 
   return (
-    <Layout home>      
-        {/* <select className="form-select appearance-none
-      block
-      w-full
-      px-3
-      py-1.5
-      text-base
-      font-normal
-      text-gray-700
-      bg-white bg-clip-padding bg-no-repeat
-      border border-solid border-gray-300
-      rounded
-      transition
-      ease-in-out
-      m-0
-      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
-          <option value="all">all</option>
-          <option value="agreements">agreements</option>
-          <option value="warming">warming</option>
+    <Layout home>    
+        <select id="categories" className="place-items-center w-40 p-1.5 ml-20 sm:ml-56 bg-stone-800 text-white inline-flex border border-gray-300 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <option defaultValue>Choose a category</option>
+          <option value="all">All</option>
+          <option value="agreements">Agreements</option>
+          <option value="assessment">Assessment</option>
+          <option value="awareness">Awareness</option>          
+          <option value="warming">Warming</option>
         </select>                
         <div className='sorting'>
           {order === "ascending" ? (
                       <svg 
-                        className="svg-icon" 
+                        className="svg-icon hover:fill-current hover:text-cyan-500" 
                         onClick={() => setOrder("ascending")}
                         style={{width:"1em", height:"1em", vertical:"middle", fill:"currentColor", overflow:"hidden", display:"inline-block", marginLeft:"20px"}}              
                         viewBox="0 0 1024 1024" 
-                        color="#20B2AA"
+                        color="white"
                         version="1.1" 
                         xmlns="http://www.w3.org/2000/svg">
                           <path d="M279.15323 958.059228l217.110799-363.160177-141.539436 0L354.724593 63.957829l-151.123938 0 0 530.943021L62.057421 594.900849 279.15323 958.059228 279.15323 958.059228zM570.078783 64.464885l386.443791 0 0 108.976114L570.078583 173.440999 570.078783 64.464885 570.078783 64.464885zM570.078783 369.594007 878.364965 369.594007l0-108.974515L570.078783 260.619492 570.078783 369.594007zM570.078783 565.747016l230.128573 0 0-108.976114L570.078783 456.770901 570.078783 565.747016 570.078783 565.747016zM570.078783 761.904621l151.972163 0L722.050945 652.930305l-151.972163 0L570.078783 761.904621zM570.078783 958.059228l73.813355 0 0-108.974315-73.813355 0L570.078783 958.059228z"  />
                       </svg>                
                     ) : (
                       <svg 
-                        className="svg-icon" 
+                        className="svg-icon hover:text-cyan-500" 
                         onClick={() => setOrder("descending")}
                         style={{width:"1em", height:"1em", vertical:"middle", fill:"currentColor", overflow:"hidden", display:"inline-block", marginLeft:"20px"}} 
-                        color="#00FFFF"
+                        color="white"
                         viewBox="0 0 1024 1024" 
                         version="1.1" 
                         xmlns="http://www.w3.org/2000/svg">
@@ -147,7 +136,7 @@ export default function Home({ allPostsData }) {
                       </svg>
                     )}          
       </div>
-      <br/><br/>                    */}
+      <br/><br/>                   
       <div className="timeline">
         <InfiniteScroll
             dataLength={entries?.length ?? 0}            

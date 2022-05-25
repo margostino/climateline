@@ -9,6 +9,13 @@ import { useEffect, useState } from "react";
 import { Ripple } from 'react-awesome-spinners'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+const categoryMapping = {
+  "agreements": ["sign-out", "handshake"],
+  "assessment": ["file-text"],
+  "awareness": ["seedling"],
+  "warming": ["thermometer-three-quarters"]
+};
+
 export async function getStaticProps() {  
   const allPostsData = await getPosts();
   return {
@@ -20,8 +27,8 @@ export async function getStaticProps() {
 }
 
 // Sort posts by date
-function sortPosts(orderProperty, allPostsData) {  
-  return allPostsData.sort(({ date: a }, { date: b }) => {    
+function sortPosts(orderProperty, articles) {  
+  return articles.sort(({ date: a }, { date: b }) => {    
     if (a < b) {
       return orderProperty === "descending" ? 1 : -1;
     } else if (a > b) {
@@ -75,6 +82,19 @@ export default function Home({ allPostsData }) {
     }
   }
 
+  function filterByCategory() {    
+    const category = document.getElementById("categories").value    
+    if (["initial", "all"].includes(category)) {
+      setEntries(allPostsData);
+    } else {
+      const filteredPost = allPostsData.filter(function(item) {
+        const icons = categoryMapping[category]      
+        return icons.includes(item.icon);      
+      });
+      setEntries(filteredPost);
+    }
+  }
+
   function sorting(order) {
     const preOrder = order === "descending" ? "ascending" : "descending";
     const root = window.document.documentElement;    
@@ -83,20 +103,23 @@ export default function Home({ allPostsData }) {
     // if (typeof window !== "undefined") {
     //   localStorage.setItem("order", order);
     // }    
-    const sorted = sortPosts(order, allPostsData);        
+    const sorted = sortPosts(order, allPostsData);
     setEntries(sorted);    
-    setOrder(order)    
+    setOrder(order);
   }
 
   useEffect(() => {
     fetchData()
     sorting(order)
+    filterByCategory()
   }, [])
   
   return (
     <Layout home>    
-        <select id="categories" className="place-items-center w-40 p-1.5 ml-20 sm:ml-56 bg-stone-800 text-white inline-flex border border-gray-300 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-          <option defaultValue>Choose a category</option>
+        <select id="categories" 
+                onChange={filterByCategory} 
+                className="place-items-center w-40 p-1.5 ml-20 sm:ml-56 bg-stone-800 text-white inline-flex border border-gray-300 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <option value="initial" defaultValue>Choose a category</option>
           <option value="all">All</option>
           <option value="agreements">Agreements</option>
           <option value="assessment">Assessment</option>

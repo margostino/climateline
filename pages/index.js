@@ -8,7 +8,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useEffect, useState } from "react";
 import { Ripple } from 'react-awesome-spinners'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import useOrder from "../lib/useOrder";
 
 export async function getStaticProps() {  
   const allPostsData = await getPosts();
@@ -58,7 +57,8 @@ export default function Home({ allPostsData }) {
   let direction = "";
   let pageSize = 10
 
-  const [order, setOrder] = useOrder();
+  //const [order, setOrder] = useOrder();
+  const [order, setOrder] = useState("descending")
   const [entries, setEntries] = useState([])
   const [offset, setOffset] = useState(0)
   const [hasMore, setHasMore] = useState(true)
@@ -75,32 +75,24 @@ export default function Home({ allPostsData }) {
     }
   }
 
-  useEffect(() => {
-    const orderProperty = order === "descending" ? "ascending" : "descending";
+  function sorting(order) {
+    const preOrder = order === "descending" ? "ascending" : "descending";
     const root = window.document.documentElement;    
-    root.classList.remove(orderProperty);
+    root.classList.remove(preOrder);
     root.classList.add(order);
-    
-    if (typeof window !== "undefined") {
-      localStorage.setItem("order", order);
-    }
+    // if (typeof window !== "undefined") {
+    //   localStorage.setItem("order", order);
+    // }    
     const sorted = sortPosts(order, allPostsData);        
-    setEntries(sorted);
-  }, [order]);
-    
+    setEntries(sorted);    
+    setOrder(order)    
+  }
+
   useEffect(() => {
     fetchData()
+    sorting(order)
   }, [])
   
-  // useEffect(() => {
-  //   const node = document.createElement("li");
-  //   const textnode = document.createTextNode("Water");
-  //   node.appendChild(textnode);
-  //   const a = "<svg class=\"svg-icon order\" onClick={() => setOrder(\"ascending\")} style=\"width:1em;height:1em;vertical:middle;fill:currentColor;overflow:hidden;display:inline-block;margin-left:20px\" viewBox=\"0 0 1024 1024\" color=\"#20B2AA\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M279.15323 958.059228l217.110799-363.160177-141.539436 0L354.724593 63.957829l-151.123938 0 0 530.943021L62.057421 594.900849 279.15323 958.059228 279.15323 958.059228zM570.078783 64.464885l386.443791 0 0 108.976114L570.078583 173.440999 570.078783 64.464885 570.078783 64.464885zM570.078783 369.594007 878.364965 369.594007l0-108.974515L570.078783 260.619492 570.078783 369.594007zM570.078783 565.747016l230.128573 0 0-108.976114L570.078783 456.770901 570.078783 565.747016 570.078783 565.747016zM570.078783 761.904621l151.972163 0L722.050945 652.930305l-151.972163 0L570.078783 761.904621zM570.078783 958.059228l73.813355 0 0-108.974315-73.813355 0L570.078783 958.059228z\"></path></svg>"
-  //   var x = document.getElementById("title");
-  //   x.outerHTML += a;
-  // });
-
   return (
     <Layout home>    
         <select id="categories" className="place-items-center w-40 p-1.5 ml-20 sm:ml-56 bg-stone-800 text-white inline-flex border border-gray-300 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -112,22 +104,22 @@ export default function Home({ allPostsData }) {
           <option value="warming">Warming</option>
         </select>                
         <div className='sorting'>
-          {order === "ascending" ? (
+          {order === "descending" ? (
                       <svg 
                         className="svg-icon hover:fill-current hover:text-cyan-500" 
-                        onClick={() => setOrder("ascending")}
-                        style={{width:"1em", height:"1em", vertical:"middle", fill:"currentColor", overflow:"hidden", display:"inline-block", marginLeft:"20px"}}              
+                        onClick={() => sorting("ascending")}
+                        style={{width:"1em", height:"1em", vertical:"middle", fill:"currentColor", overflow:"hidden", display:"inline-block", marginLeft:"10px"}}              
                         viewBox="0 0 1024 1024" 
                         color="white"
                         version="1.1" 
                         xmlns="http://www.w3.org/2000/svg">
-                          <path d="M279.15323 958.059228l217.110799-363.160177-141.539436 0L354.724593 63.957829l-151.123938 0 0 530.943021L62.057421 594.900849 279.15323 958.059228 279.15323 958.059228zM570.078783 64.464885l386.443791 0 0 108.976114L570.078583 173.440999 570.078783 64.464885 570.078783 64.464885zM570.078783 369.594007 878.364965 369.594007l0-108.974515L570.078783 260.619492 570.078783 369.594007zM570.078783 565.747016l230.128573 0 0-108.976114L570.078783 456.770901 570.078783 565.747016 570.078783 565.747016zM570.078783 761.904621l151.972163 0L722.050945 652.930305l-151.972163 0L570.078783 761.904621zM570.078783 958.059228l73.813355 0 0-108.974315-73.813355 0L570.078783 958.059228z"  />
+                          <path d="M279.15323 958.059228l217.110799-363.160177-141.539436 0L354.724593 63.957829l-151.123938 0 0 530.943021L62.057421 594.900849 279.15323 958.059228 279.15323 958.059228zM570.078783 64.464885l386.443791 0 0 108.976114L570.078583 173.440999 570.078783 64.464885 570.078783 64.464885zM570.078783 369.594007 878.364965 369.594007l0-108.974515L570.078783 260.619492 570.078783 369.594007zM570.078783 565.747016l230.128573 0 0-108.976114L570.078783 456.770901 570.078783 565.747016 570.078783 565.747016zM570.078783 761.904621l151.972163 0L722.050945 652.930305l-151.972163 0L570.078783 761.904621zM570.078783 958.059228l73.813355 0 0-108.974315-73.813355 0L570.078783 958.059228z"  />                          
                       </svg>                
                     ) : (
                       <svg 
-                        className="svg-icon hover:text-cyan-500" 
-                        onClick={() => setOrder("descending")}
-                        style={{width:"1em", height:"1em", vertical:"middle", fill:"currentColor", overflow:"hidden", display:"inline-block", marginLeft:"20px"}} 
+                      className="svg-icon hover:fill-current hover:text-cyan-500" 
+                        onClick={() => sorting("descending")}
+                        style={{width:"1em", height:"1em", vertical:"middle", fill:"currentColor", overflow:"hidden", display:"inline-block", marginLeft:"10px"}} 
                         color="white"
                         viewBox="0 0 1024 1024" 
                         version="1.1" 

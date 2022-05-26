@@ -8,6 +8,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useEffect, useState } from "react";
 import { Ripple } from 'react-awesome-spinners'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ca } from 'date-fns/locale';
 
 const categoryMapping = {
   "agreements": ["sign-out", "handshake"],
@@ -64,17 +65,19 @@ export default function Home({ allPostsData }) {
   let direction = "";
   let pageSize = 10
 
-  //const [order, setOrder] = useOrder();
   const [order, setOrder] = useState("descending")
+  const [category, setCategory] = useState("initial")
   const [entries, setEntries] = useState([])
   const [offset, setOffset] = useState(0)
   const [hasMore, setHasMore] = useState(true)
   
   // InfiniteScroll only for visualization since all files are loaded async at once.
   const fetchData = async () => {
-    try {      
+    try {    
       const newEntries = allPostsData.slice(0, offset + pageSize);      
       setEntries(newEntries)
+      filterByCategory();
+      sorting(order);     
       setOffset((prevOffset) => prevOffset + pageSize)      
       entries.length === allPostsData.length && setHasMore(false)             
     } catch (error) {
@@ -82,36 +85,35 @@ export default function Home({ allPostsData }) {
     }
   }
 
-  function filterByCategory() {    
+  function filterByCategory() {        
     const category = document.getElementById("categories").value    
-    if (["initial", "all"].includes(category)) {
+    setCategory(category);
+    if (["initial", "all"].includes(category)) {      
       setEntries(allPostsData);
     } else {
-      const filteredPost = allPostsData.filter(function(item) {
+      const filtered = allPostsData.filter(function(item) {
         const icons = categoryMapping[category]      
         return icons.includes(item.icon);      
       });
-      setEntries(filteredPost);
+      setEntries(filtered);
     }
   }
 
-  function sorting(order) {
-    const preOrder = order === "descending" ? "ascending" : "descending";
+  function sorting(selectedOrder) {        
+    const preOrder = selectedOrder === "descending" ? "ascending" : "descending";
     const root = window.document.documentElement;    
     root.classList.remove(preOrder);
-    root.classList.add(order);
+    root.classList.add(selectedOrder);
     // if (typeof window !== "undefined") {
     //   localStorage.setItem("order", order);
-    // }    
-    const sorted = sortPosts(order, allPostsData);
-    setEntries(sorted);    
-    setOrder(order);
+    // }
+    const sorted = sortPosts(selectedOrder, (entries.length > 0) ? entries : allPostsData);    
+    setOrder(selectedOrder);
+    setEntries(sorted);            
   }
 
-  useEffect(() => {
+  useEffect(() => {    
     fetchData()
-    sorting(order)
-    filterByCategory()
   }, [])
   
   return (

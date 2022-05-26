@@ -70,6 +70,7 @@ export default function Home({ allPostsData }) {
   const [entries, setEntries] = useState([])
   const [offset, setOffset] = useState(0)
   const [hasMore, setHasMore] = useState(true)
+  const [showButton, setShowButton] = useState(false);
   
   // InfiniteScroll only for visualization since all files are loaded async at once.
   const fetchData = async () => {
@@ -116,6 +117,24 @@ export default function Home({ allPostsData }) {
     fetchData()
   }, [])
   
+  useEffect(() => {
+    window.addEventListener("scroll", () => {      
+      if (window.pageYOffset > 10) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    });
+  }, []);
+
+  // This function will scroll the window to the top 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // for smoothly scrolling
+    });
+  };
+
   return (
     <Layout home>    
         <select id="categories" 
@@ -154,6 +173,11 @@ export default function Home({ allPostsData }) {
                     )}          
       </div>
       <br/><br/>                   
+      {showButton && (
+          <button onClick={scrollToTop} className="back-to-top">
+            &#8679;
+          </button>          
+      )}
       <div className="timeline">
         <InfiniteScroll
             dataLength={entries?.length ?? 0}            

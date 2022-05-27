@@ -14,8 +14,14 @@ const categoryMapping = {
   "agreements": ["sign-out", "handshake"],
   "assessment": ["file-text"],
   "awareness": ["seedling"],
-  "warming": ["thermometer-three-quarters"]
+  "warming": ["thermometer-three-quarters"],
+  "wildfires": ["fire"]
 };
+
+const countryData = [
+  { value: 'USA', name: 'USA' },
+  { value: 'CANADA', name: 'CANADA' }            
+];
 
 export async function getStaticProps() {  
   const allPostsData = await getPosts();
@@ -71,7 +77,9 @@ export default function Home({ allPostsData }) {
   const [offset, setOffset] = useState(0)
   const [hasMore, setHasMore] = useState(true)
   const [showButton, setShowButton] = useState(false);
-  
+
+  console.log(Object.keys(categoryMapping));
+
   // InfiniteScroll only for visualization since all files are loaded async at once.
   const fetchData = async () => {
     try {    
@@ -86,7 +94,7 @@ export default function Home({ allPostsData }) {
     }
   }
 
-  function filterByCategory() {        
+  function filterByCategory() {     
     const category = document.getElementById("categories").value    
     setCategory(category);
     if (["initial", "all"].includes(category)) {      
@@ -142,11 +150,10 @@ export default function Home({ allPostsData }) {
                 className="place-items-center w-40 p-1.5 ml-20 sm:ml-56 bg-stone-800 text-white inline-flex border border-gray-300 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
           <option value="initial" defaultValue>Choose a category</option>
           <option value="all">All</option>
-          <option value="agreements">Agreements</option>
-          <option value="assessment">Assessment</option>
-          <option value="awareness">Awareness</option>          
-          <option value="warming">Warming</option>
-        </select>                
+          {Object.keys(categoryMapping).map(key => {
+            return <option key={key} value={key}>{key}</option>;
+          })}
+        </select>                        
         <div className='sorting'>
           {order === "descending" ? (
                       <svg 

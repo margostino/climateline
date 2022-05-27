@@ -11,6 +11,9 @@
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    counter-reset: section;
   }
   
   /* The actual timeline (the vertical ruler) */

@@ -20,14 +20,43 @@
   .timeline::after {
     content: "";
     position: absolute;
-    width: 6px;
+    width: 4px;
     background-color: white;
     top: 50px;
-    bottom: 80px;
-    left: 50%;    
+    bottom: 0px;
+    left: 50%;        
     /* margin-left: -3px; */
   }
   
+  .line-end {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;    
+  }
+
+  .line-end::after {
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    right: -18px;
+    background-color: black;
+    border: 1px solid white;
+    top: 18px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .fa-earth-americas {
+    position: absolute;
+    bottom: 0;  
+    left: 97%;
+    right: 96%;  
+    top: 128%;  
+    z-index: 2;
+  }
+
   /* Container around content */
   .container {
     padding: 10px 40px;
@@ -151,7 +180,7 @@
   @media screen and (max-width: 600px) {
     /* Place the timelime to the left */
     .timeline::after {
-      left: 29px;      
+      left: 32px;      
       z-index: -1;
       background-color: white;      
     }
@@ -205,6 +234,36 @@
     .filter {
       display: inline-block;
       margin-left: 115px;
+    }
+
+    .line-end {
+      padding: 10px 40px;
+      position: relative;
+      background-color: inherit;
+      width: 50%;    
+      
+    }
+  
+    .line-end::after {
+      content: "";
+      position: absolute;
+      width: 35px;
+      height: 35px;
+      right: 131px;
+      background-color: black;
+      border: 1px solid white;
+      top: 18px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+  
+    .fa-earth-americas {
+      position: absolute;
+      bottom: 0;  
+      left: 22px;
+      right: 20px;  
+      top: 128%;  
+      z-index: 2;
     }
   }
   

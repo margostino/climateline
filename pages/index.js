@@ -8,7 +8,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useEffect, useState } from "react";
 import { Ripple } from 'react-awesome-spinners'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ca } from 'date-fns/locale';
 
 const categoryMapping = {
   "agreements": ["sign-out", "handshake"],
@@ -77,8 +76,6 @@ export default function Home({ allPostsData }) {
   const [offset, setOffset] = useState(0)
   const [hasMore, setHasMore] = useState(true)
   const [showButton, setShowButton] = useState(false);
-
-  console.log(Object.keys(categoryMapping));
 
   // InfiniteScroll only for visualization since all files are loaded async at once.
   const fetchData = async () => {
@@ -200,7 +197,10 @@ export default function Home({ allPostsData }) {
                 return;
               }
             })}
-        </InfiniteScroll>
+        </InfiniteScroll>        
+        <div className="line-end">          
+              <FontAwesomeIcon icon="fa fa-earth" size="1x" fixedWidth aria-hidden="true" color='white' beat/>          
+        </div>              
       </div>
     </Layout>      
   );

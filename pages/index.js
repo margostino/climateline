@@ -17,11 +17,6 @@ const categoryMapping = {
   "wildfires": ["fire"]
 };
 
-const countryData = [
-  { value: 'USA', name: 'USA' },
-  { value: 'CANADA', name: 'CANADA' }            
-];
-
 export async function getStaticProps() {  
   const allPostsData = await getPosts();
   return {
@@ -32,7 +27,6 @@ export async function getStaticProps() {
   };
 }
 
-// Sort posts by date
 function sortPosts(orderProperty, articles) {  
   return articles.sort(({ date: a }, { date: b }) => {    
     if (a < b) {
@@ -45,7 +39,7 @@ function sortPosts(orderProperty, articles) {
   });
 }
 
-function TimeLine({ id, title, date, direction, icon}) {  
+function TimeLine({ id, title, date, location, direction, icon}) {  
   let iconDirection = direction === "left" ? "icon-left" : "icon-right";    
   return (        
     <div className={`container ${direction}`}>      
@@ -55,7 +49,11 @@ function TimeLine({ id, title, date, direction, icon}) {
       </div>      
       <article className="content" key={id}>
         <small className={utilStyles.whiteText}>
-          <Date dateString={date} />
+        🗓️ &nbsp;&nbsp; <Date dateString={date} />
+        </small>
+        <br />
+        <small className={utilStyles.locationText}>
+        📍 &nbsp;&nbsp; {location}
         </small>
         <br />
         <Link href={`/posts/${id}`}>
@@ -189,10 +187,10 @@ export default function Home({ allPostsData }) {
             hasMore={hasMore}
             loader={<div className="spinner"><Ripple/></div>} 
             endMessage={<p></p>}>
-            {entries.map(({ id, title, date, icon }) => {                  
+            {entries.map(({ id, title, date, location, icon }) => {                  
               direction = direction === "left" ? "right" : "left";   
               if (date) {
-                return <TimeLine id={id} title={title} date={date} direction={direction} icon={icon} key={id}/>;   
+                return <TimeLine id={id} title={title} date={date} location={location} direction={direction} icon={icon} key={id}/>;   
               } else {
                 return;
               }

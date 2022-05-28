@@ -3,6 +3,7 @@ title: 'United Nations Framework Convention on Climate Change'
 date: '1992-06-04'
 source_url: https://www.un.org/en/conferences/environment/rio1992
 source_name: United Nations
+location: 'Global'
 icon: handshake
 ---
 

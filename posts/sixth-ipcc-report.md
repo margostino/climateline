@@ -3,6 +3,7 @@ title: 'Sixth IPCC report'
 date: '2021-08-09'
 source_url: https://www.downtoearth.org.in/blog/climate-change/six-takeaways-from-ipcc-ar6-report-long-term-benefits-of-cutting-emissions-today-outweigh-costs-82213
 source_name: downtoearth.org
+location: 'Global'
 icon: file-text
 ---
 

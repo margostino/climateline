@@ -3,6 +3,7 @@ title: 'August Complex fire'
 date: '2020-08-16'
 source_url: https://en.wikipedia.org/wiki/August_Complex_fire
 source_name: Wikipedia
+location: 'Northern California'
 icon: fire
 ---
 

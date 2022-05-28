@@ -61,6 +61,11 @@
     color: white;
   }
 
+  .locationText {
+    color: white;
+    /* font-style: italic; */
+  }
+
   .linkDarkText {
     font: bold;
     color: whitesmoke;

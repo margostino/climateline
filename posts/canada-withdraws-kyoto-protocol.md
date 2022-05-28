@@ -3,6 +3,7 @@ title: 'Canada withdraws from the Kyoto Protocol'
 date: '2011-12-13'
 source_url: https://en.wikipedia.org/wiki/Canada_and_the_Kyoto_Protocol
 source_name: Wikipedia
+location: 'Global'
 icon: sign-out
 ---
 

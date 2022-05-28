@@ -3,6 +3,7 @@ title: China overtook the United States as the world's biggest emitter of carbon
 date: '2006-12-31'
 source_url: https://www.nytimes.com/2007/06/20/business/worldbusiness/20iht-emit.1.6227564.html
 source_name: The New York Times
+location: 'China'
 icon: thermometer-three-quarters
 ---
 

@@ -3,6 +3,7 @@ title: 'First Earth Day'
 date: '1970-04-22'
 source_url: https://www.earthday.org/history
 source_name: earthday.org
+location: 'Global'
 icon: seedling
 ---
 

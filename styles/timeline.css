@@ -51,9 +51,9 @@
   .fa-earth-americas {
     position: absolute;
     bottom: 0;  
-    left: 97%;
-    right: 96%;  
-    top: 128%;  
+    left: 331px;
+    /* right: 98%;   */
+    top: 130%;  
     z-index: 2;
   }
 

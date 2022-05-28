@@ -203,8 +203,8 @@
     .icon-wrapper {
       position: absolute;
       z-index: 2;
-      left: 23px;
-      margin-top: 10px;    
+      left: 22px;
+      margin-top: 12px;    
     }
 
     /* Make sure all circles are at the same spot */
@@ -249,7 +249,7 @@
       position: absolute;
       width: 35px;
       height: 35px;
-      right: 125px;
+      right: 124px;
       background-color: black;
       border: 1px solid white;
       top: 18px;
@@ -262,7 +262,7 @@
       bottom: 0;  
       left: 22px;
       right: 20px;  
-      top: 128%;  
+      top: 134%;  
       z-index: 2;
     }
   }

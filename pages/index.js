@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Layout from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
-import { getPosts } from '../lib/posts';
+import { getArticles } from '../lib/articles';
 import Date from '../components/date';
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useEffect, useState } from "react";
@@ -18,16 +18,16 @@ const categoryMapping = {
 };
 
 export async function getStaticProps() {  
-  const allPostsData = await getPosts();
+  const articlesData = await getArticles();
   return {
     props: {
-      allPostsData,      
+      articlesData,      
     },
     revalidate: 10,
   };
 }
 
-function sortPosts(orderProperty, articles) {  
+function sortArticles(orderProperty, articles) {  
   return articles.sort(({ date: a }, { date: b }) => {    
     if (a < b) {
       return orderProperty === "descending" ? 1 : -1;
@@ -56,7 +56,7 @@ function TimeLine({ id, title, date, location, direction, icon}) {
         📍 &nbsp;&nbsp; {location}
         </small>
         <br />
-        <Link href={`/posts/${id}`}>
+        <Link href={`/articles/${id}`}>
           <a className={utilStyles.linkDarkText}>{title}</a>
         </Link>                  
       </article>      
@@ -64,7 +64,7 @@ function TimeLine({ id, title, date, location, direction, icon}) {
   );
 }
 
-export default function Home({ allPostsData }) {
+export default function Home({ articlesData }) {
   let direction = "";
   let pageSize = 10
 
@@ -78,12 +78,12 @@ export default function Home({ allPostsData }) {
   // InfiniteScroll only for visualization since all files are loaded async at once.
   const fetchData = async () => {
     try {    
-      const newEntries = allPostsData.slice(0, offset + pageSize);      
+      const newEntries = articlesData.slice(0, offset + pageSize);      
       setEntries(newEntries)
       filterByCategory();
       sorting(order);     
       setOffset((prevOffset) => prevOffset + pageSize)      
-      entries.length === allPostsData.length && setHasMore(false)             
+      entries.length === articlesData.length && setHasMore(false)             
     } catch (error) {
       console.log(error)
     }
@@ -93,9 +93,9 @@ export default function Home({ allPostsData }) {
     const category = document.getElementById("categories").value    
     setCategory(category);
     if (["initial", "all"].includes(category)) {      
-      setEntries(allPostsData);
+      setEntries(articlesData);
     } else {
-      const filtered = allPostsData.filter(function(item) {
+      const filtered = articlesData.filter(function(item) {
         const icons = categoryMapping[category]      
         return icons.includes(item.icon);      
       });
@@ -111,7 +111,7 @@ export default function Home({ allPostsData }) {
     // if (typeof window !== "undefined") {
     //   localStorage.setItem("order", order);
     // }
-    const sorted = sortPosts(selectedOrder, (entries.length > 0) ? entries : allPostsData);    
+    const sorted = sortArticles(selectedOrder, (entries.length > 0) ? entries : articlesData);    
     setOrder(selectedOrder);
     setEntries(sorted);            
   }
@@ -121,13 +121,17 @@ export default function Home({ allPostsData }) {
   }, [])
   
   useEffect(() => {
+    let isMounted = true; 
     window.addEventListener("scroll", () => {      
-      if (window.pageYOffset > 10) {
+      if (isMounted) {
+        if (window.pageYOffset > 10) {
         setShowButton(true);
-      } else {
-        setShowButton(false);
+        } else {
+          setShowButton(false);
+        }
       }
     });
+    return () => { isMounted = false };
   }, []);
 
   // This function will scroll the window to the top 

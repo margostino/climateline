@@ -1,12 +1,12 @@
 import Layout from '../../components/layout'
-import { getAllPostIds, getPostData } from '../../lib/posts'
+import { getArticlesIds, getArticleData } from '../../lib/articles'
 import Head from 'next/head';
 import Date from '../../components/date';
 import utilStyles from '../../styles/utils.module.css';
 import Link from 'next/link';
 
 export async function getStaticPaths() {
-  const paths = getAllPostIds()
+  const paths = getArticlesIds()
   return {
     paths,
     fallback: 'blocking'
@@ -14,33 +14,33 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const postData = await getPostData(params.id)  
+  const articleData = await getArticleData(params.id)  
   return {
     props: {
-      postData
+      articleData
     }
   }
 }
 
-export default function Post({ postData }) {
+export default function Article({ articleData }) {
   return (
-    <Layout post>
+    <Layout article>
       <Head>
-        <title>{postData.title}</title>
+        <title>{articleData.title}</title>
       </Head>
       <article>
-        <h1 className={utilStyles.headingXl}>{postData.title}</h1>                    
+        <h1 className={utilStyles.headingXl}>{articleData.title}</h1>                    
         <div className={utilStyles.lightText}>
-          <Date dateString={postData.date} />
+          <Date dateString={articleData.date} />
         </div>
         <p className={utilStyles.headingMd}>
           Source:{' '}
-          <Link href={postData.source_url}>
-            <a target="_blank">{postData.source_name}</a>
+          <Link href={articleData.source_url}>
+            <a target="_blank">{articleData.source_name}</a>
           </Link>            
         </p>
         <br />
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />        
+        <div dangerouslySetInnerHTML={{ __html: articleData.contentHtml }} />        
       </article>
     </Layout>
   );

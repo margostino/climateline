@@ -18,12 +18,12 @@
     font-size: 1.5rem;
     line-height: 1.4;
     margin: 1rem 0;
-    display: inline-block;    
+    display: inline-block;        
   }
   
   .headingMd {
     font-size: 0.9rem;
-    line-height: 1.5;
+    line-height: 1.5;    
   }
   
   .borderCircle {
@@ -32,11 +32,15 @@
   
   .colorInherit {
     color: inherit;
+    text-decoration:underline;
+    text-decoration-style: dotted;
   }
   
   .mainTitle {
     color: white;
-    display: inline-block;
+    display: inline-block;    
+    text-decoration:underline;
+    text-decoration-style: dotted;
   }
 
   .padding1px {

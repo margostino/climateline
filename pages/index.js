@@ -17,11 +17,11 @@ const categoryMapping = {
   "wildfires": ["fire"]
 };
 
-export async function getStaticProps() {  
+export async function getStaticProps() {    
   const articlesData = await getArticles();
   return {
     props: {
-      articlesData,      
+      articlesData,
     },
     revalidate: 10,
   };
@@ -68,13 +68,13 @@ export default function Home({ articlesData }) {
   let direction = "";
   let pageSize = 10
 
-  const [order, setOrder] = useState("descending")
-  const [category, setCategory] = useState("initial")
+  const [category, setCategory] = useState("initial")    
+  const [order, setOrder] = useState("descending")  
   const [entries, setEntries] = useState([])
   const [offset, setOffset] = useState(0)
   const [hasMore, setHasMore] = useState(true)
   const [showButton, setShowButton] = useState(false);
-
+    
   // InfiniteScroll only for visualization since all files are loaded async at once.
   const fetchData = async () => {
     try {    
@@ -83,15 +83,15 @@ export default function Home({ articlesData }) {
       filterByCategory();
       sorting(order);     
       setOffset((prevOffset) => prevOffset + pageSize)      
-      entries.length === articlesData.length && setHasMore(false)             
+      entries.length === articlesData.length && setHasMore(false)                   
     } catch (error) {
       console.log(error)
     }
   }
 
-  function filterByCategory() {     
+  function filterByCategory() {    
     const category = document.getElementById("categories").value    
-    setCategory(category);
+    setCategory(category);  
     if (["initial", "all"].includes(category)) {      
       setEntries(articlesData);
     } else {
@@ -116,7 +116,7 @@ export default function Home({ articlesData }) {
     setEntries(sorted);            
   }
 
-  useEffect(() => {    
+  useEffect(() => {   
     fetchData()
   }, [])
   

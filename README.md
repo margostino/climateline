@@ -24,6 +24,7 @@
 - [ ] Twitter integration
 - [ ] Curate content
 - [ ] Parallel timelines with personalized content (e.g. companies contribution)
+- [ ] Routing by by category (url, query param)
 
 # Contributing
 

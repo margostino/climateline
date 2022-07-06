@@ -26,6 +26,7 @@
 - [ ] Parallel timelines with personalized content (e.g. companies contribution)
 - [ ] Routing by by category (url, query param)
 - [ ] Upload new articles from Telegram Bot (quick posts)
+- [ ] Hot Uploads (no deployment)
 
 # Contributing
 

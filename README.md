@@ -27,7 +27,12 @@
 - [ ] Routing by by category (url, query param)
 - [ ] Upload new articles from Telegram Bot (quick posts)
 - [ ] Hot Uploads (no deployment)
-- [ ] Search articles
+- [ ] Search articles  
+
+
+# Run local
+
+> npm run dev
 
 # Contributing
 

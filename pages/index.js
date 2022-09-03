@@ -14,7 +14,10 @@ const categoryMapping = {
   "assessment": ["file-text"],
   "awareness": ["seedling"],
   "warming": ["thermometer-three-quarters"],
-  "wildfires": ["fire"]
+  "wildfires": ["fire"],
+  "floods": ["droplet"],
+  "drought": ["droplet-slash"],
+  "health" : ["heart-pulse"]
 };
 
 export async function getStaticProps() {    

@@ -4,6 +4,10 @@
 
 ### A timeline of the most significant Climate Change events along the history
 
+### News publisher
+
+In order to fetch, update and upload new articles easily by your phone without Git burden, there is a tool called [climateline-processor](https://github.com/margostino/climateline-processor) to do it at any time from enywhere.
+
 ## Features
 
 - [x] Initial very basic design with few posts

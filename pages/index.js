@@ -17,7 +17,8 @@ const categoryMapping = {
   "wildfires": ["fire"],
   "floods": ["droplet"],
   "drought": ["droplet-slash"],
-  "health" : ["heart-pulse"]
+  "health" : ["heart-pulse"],
+  "hurricane" : ["hurricane"]
 };
 
 export async function getStaticProps() {    

@@ -1,5 +1,5 @@
 ---
-title: 'Snow is melting away in the West thanks to wildfires | Canada&#39;s National Observer'
+title: 'Snow is melting away in the West thanks to wildfires'
 date: '2022-09-22T22:20:48Z'
 source_url: 'https://www.nationalobserver.com/2022/09/22/news/snow-melting-away-west-thanks-wildfires'
 source_name: 'nationalobserver.com'
